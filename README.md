@@ -3,20 +3,29 @@
 
 ## Usage
 ```lua
-local prepass = loadstring(game:HttpGet("https://raw.githubusercontent.com/RiseBlox/UltraSmartSaveInstance/main/prepass.luau", true))()
+task.spawn(function()
+    -- 🌐 Initializing execution directly from your repository links
+    local prepassURL = "https://raw.githubusercontent.com/Kaiiiiiiiiiii-cloud/UltraSmartSaveInstance/main/prepass.luau"
+    local prepass = loadstring(game:HttpGet(prepassURL, true))()
 
-local Options = {} -- Full list @ https://luau.github.io/UniversalSynSaveInstance/api/SynSaveInstance
+    local Options = {
+        IgnoreSharedStrings = true,
+        IgnoreSpecialProperties = true,
+        IgnoreDefaultProperties = true,
+        SafeMode = true                 -- Prevents background disconnect kicks
+    } 
 
-local PrepassOptions = {
-    RequestsPerMinute = 1350,
-    MaxInFlight       = 30,
-    ApiUrl            = "https://api.lua.expert/decompile",
-    Verbose           = true,
-    SkipPrepass       = false, -- skip cache warm-up, go straight to USSI
-    SkipSaveInstance  = false, -- run only the prepass, don't call USSI
-}
+    local PrepassOptions = {
+        RequestsPerMinute = 1350,
+        MaxInFlight       = 30,
+        ApiUrl            = "https://lua.expert",
+        Verbose           = true,
+        SkipPrepass       = false, 
+        SkipSaveInstance  = false, 
+    }
 
-prepass(Options, PrepassOptions)
+    prepass(Options, PrepassOptions)
+end)
 ```
 
 <details>
