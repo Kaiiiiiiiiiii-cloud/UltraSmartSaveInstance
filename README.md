@@ -4,7 +4,6 @@
 ## Usage
 ```lua
 task.spawn(function()
-    -- 🌐 Initializing execution directly from your repository links
     local prepassURL = "https://raw.githubusercontent.com/Kaiiiiiiiiiii-cloud/UltraSmartSaveInstance/main/prepass.luau"
     local prepass = loadstring(game:HttpGet(prepassURL, true))()
 
