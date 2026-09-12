@@ -88,7 +88,13 @@ local function DecompileViaAPI(Bytecode)
 
     local Deadline = os.clock() + Config.RequestTimeout
     while not Settled and os.clock() < Deadline do
-        task.wait(0.05)
+        local stepOk = pcall(function()
+            RunService.Heartbeat:Wait()
+        end)
+        if not stepOk then
+            local t = os.clock()
+            repeat until os.clock() - t > 0.01
+        end
     end
 
     if not Settled then
